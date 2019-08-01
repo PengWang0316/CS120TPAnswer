@@ -1,0 +1,25 @@
+I advise against using single-letter variables names but give a couple of places where they are reasonable.
+Can you think of any other legitimate uses for them?
+
+There many cases that a single-letter variable is fine.
+Here are some examples
+ 
+In a for loop
+example:
+for n in a b c d
+do
+...
+done
+
+Using as an index
+for (( i=0; i < 10; ++i ))
+do
+...
+done
+
+
+Read in users input
+read n
+...
+
+
