@@ -1,0 +1,13 @@
+By default, where can a variable assigned in a script be accessed? Select all that apply:
+
+1. In the current script
+
+2. In functions defined in the current script
+
+3. In the script that called the current script
+
+4. In scripts called by the current script
+
+5. In subshells of the current script
+
+Answer: 1, 2, 5
