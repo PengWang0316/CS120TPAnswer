@@ -1,12 +1,13 @@
 #! /bin/bash
-_max3() #@ Sort 3 integers and store in $_MAX3, $_MID3 and $_MIN3
-{       #@ USAGE:
-    [ $# -ne 3  ] && return 5
-    [[ $1 =~ [^0-9]+ ]] || [[ $2 =~ [^0-9]+ ]] || [[ $3 =~ [^0-9] ]] && echo 'We need three integers.' && return 1 
-    [ $1 -gt $2 ] && { set -- $2 $1 $3; }
-    [ $2 -gt $3 ] && { set -- $1 $3 $2; }
-    [ $1 -gt $2 ] && { set -- $2 $1 $3; }
-    _MAX3=$3
-    _MID3=$2
-    _MIN3=$1
+
+max3() #@ Sort 3 integers and store in an array
+{      #@ USAGE: max3 N1 N2 N3 [VARNAME]
+  varName=${4:-_MAX3}
+  [[ ! $varName =~ ^[characters,_][[:alnum:],_]*$ ]] && echo 'Wrong variable name.' && return 1
+  declare -n _max3=$varName
+  (( $# < 3 )) && return 4
+  (( $1 > $2 )) && set -- "$2" "$1" "$3"
+  (( $2 > $3 )) && set -- "$1" "$3" "$2"
+  (( $1 > $2 )) && set -- "$2" "$1" "$3"
+  _max3=( "$3" "$2" "$1" )
 }
